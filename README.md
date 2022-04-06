@@ -24,7 +24,7 @@ Finnally, code is deployed to kubernetes and check with curl command.
   [{"timestamp":"2022","hostname":"test","engine":"docker","visitor ":"192.168.1.1"}]
 ```
 
-I prepared a pipeline for the establishment of this environment, but I could not write all the details because my time was limited, but this pipeline can be developed further.
+a pipeline was prepared for the establishment of this environment, but I could not write all the details and got sick because my time was limited, but this pipeline can be developed further.
 
 
 P.S. 
