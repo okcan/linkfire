@@ -1,0 +1,26 @@
+image: gitlab/dind
+
+services:
+  - docker:dind
+  
+stages:
+  - build
+  - deploy
+
+buildcontainer:
+  stage: build 
+  script:
+    # Build the image
+    - sudo docker build . -t okcan/test2:1.1
+    # Push the image to specific registry
+    - sudo docker login -u okcan -p Q1w2e3r4_ && docker push okcan/test2:1.1
+
+deployment:
+  stage: deploy 
+  image: roffe/kubectl
+  script:
+    # build the kubernetes resources , as I mentioned above , we created a manifest file to Kubernetes cluster.
+    - /usr/local/bin/kubectl apply -f manifest.yaml
+    - kubectl rollout restart deployment/okcan-application
+  environment:
+    name: production
